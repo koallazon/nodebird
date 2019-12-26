@@ -1,0 +1,26 @@
+{
+  "name": "vue-nodebird-front",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@nuxtjs/vuetify": "^1.9.1",
+    "nuxt": "^2.11.0",
+    "vue": "^2.6.11",
+    "vuetify": "^2.1.15"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "nuxt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koallazon/nodebird.git"
+  },
+  "author": "koallazon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/koallazon/nodebird/issues"
+  },
+  "homepage": "https://github.com/koallazon/nodebird#readme"
+}
