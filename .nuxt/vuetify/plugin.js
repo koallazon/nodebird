@@ -10,7 +10,7 @@ export default (ctx) => {
   const vuetifyOptions = typeof options === 'function' ? options(ctx) : options
 
   vuetifyOptions.icons = vuetifyOptions.icons || {}
-  vuetifyOptions.icons.iconfont = 'mdi'
+  vuetifyOptions.icons.iconfont = 'md'
 
   const vuetify = new Vuetify(vuetifyOptions)
 
