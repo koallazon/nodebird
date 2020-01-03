@@ -1,31 +1,36 @@
 <template>
-    <div>
-        <v-toolbar color="green" dark>
-            <v-toolbar-title>
-                <nuxt-link to="/">NodeBird</nuxt-link>
-            </v-toolbar-title>
-            <v-toolbar-items>
-                <v-btn text nuxt to="/profile">
-                    <span>프로필</span>
-                </v-btn>
-                <v-btn text nuxt to="/signup">
-                    <span>회원가입</span>
-                </v-btn>
-            </v-toolbar-items>
-        </v-toolbar>
-        <v-layout>
-            <v-flex xs12 md4>
-                <LoginForm />
-            </v-flex>
-            <v-flex xs12 md8>
-                <nuxt />
-            </v-flex>
-        </v-layout>
-    </div>
+    <v-app>
+        <nav>
+            <v-toolbar dark color="green">
+                <v-toolbar-title>
+                    <nuxt-link to="/" class="white--text">NodeBird</nuxt-link>
+                </v-toolbar-title>
+                <v-spacer></v-spacer>
+                <v-toolbar-items>
+                    <v-text-field label="검색" hide-details prepend-icon="mdi-magnify" :style="{ display: 'flex', alignItems: 'center' }" />
+                    <v-btn text nuxt to="/profile" :style="{ display: 'flex', alignItems: 'center' }">
+                        <div>프로필</div>
+                    </v-btn>
+                    <v-btn text nuxt to="/signup" :style="{ display: 'flex', alignItems: 'center' }">
+                        <div>회원가입</div>
+                    </v-btn>            
+                </v-toolbar-items>
+            </v-toolbar>
+        </nav>
+        <v-row>
+            <v-col cols="12" xs="12" md="4">
+                로그인창 19분
+            </v-col>
+            <v-col cols="12" xs="12" md="8">
+                컨텐츠
+            </v-col>
+        </v-row>
+    </v-app>
 </template>
 
 <script>
     import LoginForm from '~/components/LoginForm'
+    
     export default {
         components: {
             LoginForm,
@@ -37,8 +42,5 @@
     a {
         text-decoration: none;
         color: inherit;
-    }
-    header {
-        height: 48px;
     }
 </style>
