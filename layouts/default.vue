@@ -5,7 +5,7 @@
                 <v-toolbar-title>
                     <nuxt-link to="/" class="white--text">NodeBird</nuxt-link>
                 </v-toolbar-title>
-                <v-spacer></v-spacer>
+                <v-spacer />
                 <v-toolbar-items>
                     <v-text-field label="검색" hide-details prepend-icon="mdi-magnify" :style="{ display: 'flex', alignItems: 'center' }" />
                     <v-btn text nuxt to="/profile" :style="{ display: 'flex', alignItems: 'center' }">
@@ -17,12 +17,14 @@
                 </v-toolbar-items>
             </v-toolbar>
         </nav>
-        <v-row>
+        <div>{{name}}</div>
+        <v-btn @click="onChangeName">바이바이</v-btn>
+        <v-row no-gutters>
             <v-col cols="12" xs="12" md="4">
-                로그인창 19분
+                <login-form />
             </v-col>
             <v-col cols="12" xs="12" md="8">
-                컨텐츠
+                <nuxt />
             </v-col>
         </v-row>
     </v-app>
@@ -34,8 +36,18 @@
     export default {
         components: {
             LoginForm,
+        },
+        computed: {
+            name() {
+                return this.$store.state.posts.name;
+            },
+        },
+        methods: {
+            onChangeName() {
+                this.$store.commit('posts/BYE');
+            }
         }
-    }
+    };
 </script>
 
 <style scoped>

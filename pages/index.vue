@@ -1,12 +1,12 @@
 <template>
     <div>
-        <div>
+        <v-container>
             <post-card />
             <post-card />
             <post-card />
             <post-card />  
             <post-card />  
-        </div>
+        </v-container>
     </div>
 </template>
 
