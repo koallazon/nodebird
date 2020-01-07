@@ -76,11 +76,19 @@
         methods: {
             onSubmitForm () {
                 if(this.$ref.form.validate()){
-                    alert('회원가입 시도!');
-                } else {
-                    alert('둘이 유효하지 않습니다.')
+                   this.$store.dispatch('user/signUp', {
+                       nickname: this.nickname,
+                       email: this.email,
+                })
+                .then(() => {
+                        this.$router.push({
+                            path: '/'
+                        })
+                    })
+                    .catch(() => {
+                        alert('회원가입 실패')
+                    })
                 }
-                console.log(this.valid);
             }
         },
         head() {
@@ -90,5 +98,3 @@
         }
     }
 </script>
-
-<style></style>

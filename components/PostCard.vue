@@ -3,8 +3,8 @@
         <v-image />
         <v-card-text>
             <div>
-                <h3>LTG</h3>
-                <div>안녕하세요 게시글입니다.</div>
+                <h3>{{post.User.nickname}}</h3>
+                <div>{{post.content}}</div>
             </div>
         </v-card-text>
         <v-card-actions>
@@ -26,7 +26,12 @@
 
 <script>
 export default {
-    
+    props: {
+        post: {
+            type: Object,
+            required: true,
+        },
+    },
 }
 </script>
 
