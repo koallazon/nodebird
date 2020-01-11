@@ -39,9 +39,11 @@ export default {
     },
     methods: {
         onChangeTextarea() {
-            this.hideDetails = true;
-            this.success = false;
-            this.successMessages = '';
+            if(value.length) {
+                this.hideDetails = true;
+                this.success = false;
+                this.successMessages = '';
+            }
         },
         onSubmitForm() {
             if (this.$refs.form.validate()) {

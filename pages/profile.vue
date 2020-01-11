@@ -6,9 +6,11 @@
                     <v-subheader>내 프로필</v-subheader>
                 </v-container>
                 <v-container>
-                    <v-form>
+                    <v-form v-model="valid" @submit.prevent="onChangeNickname">
                         <v-text-field
-                        label="닉네임"
+                        label="닉네임"
+                        v-model="nickname"
+                        :rules="nicknameRules"
                         required
                         />
                         <v-btn color="blue" type="submit">수정</v-btn>
@@ -39,7 +41,19 @@
         },
         data() {
             return {
-                name: 'Nuxt.js',
+                valid: false,
+                nickname: '',
+                nicknameRules: [
+                    v => !!v || '닉네임을 입력하세요.',
+                ]
+            }
+        },
+        methods: {
+            onChangeNickname() {
+                this.$store.dispatch('users/changeNickname', {
+                    nickname: this.nickname,
+
+                })
             }
         },
         head() {
