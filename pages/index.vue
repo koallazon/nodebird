@@ -26,8 +26,30 @@
                 return this.$store.state.users.me;
             },
             mainPosts() {
-                 return this.$store.state.posts.mainPosts;
+                return this.$store.state.posts.mainPosts;
+            },
+            hashMorePost() {
+                return this.$store.state.posts.hasMorePost;
             }
+        },
+        fetch({ store }) {
+        store.dispatch('posts/loadPosts');
+        },
+        mounted() {
+        window.addEventListener('scroll', this.onScroll);
+        },
+        beforeDestroy() {
+        window.removeEventListener('scroll', this.onScroll);
+        },
+        methods: {
+            onScroll() {
+                console.log('scroll');
+                if (window.scrollY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 300) {
+                if (this.hasMorePost) {
+                    this.$store.dispatch('posts/loadPosts');
+                }
+                }
+            },
         }
     }
 </script>

@@ -8,10 +8,5 @@ module.exports = {
     devModules: [
         '@nuxtjs/vuetify'
     ],
-    vuetify: {
-        defaultAssets: {
-            icons: 'md',
-            font: true,
-        }
-    }
+    vuetify: {}
 };

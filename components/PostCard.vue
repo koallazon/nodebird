@@ -2,9 +2,13 @@
     <div style="margin-bottom: 20px;">
         <v-card>
             <v-image />
+            <v-card-title>
+                <h3>
+                    <nuxt-link :to="'/user/' + post.id">{{post.User.nickname}}</nuxt-link>
+                </h3>
+            </v-card-title>
             <v-card-text>
                 <div>
-                    <h3>{{post.User.nickname}}</h3>
                     <div>{{post.content}}</div>
                 </div>
             </v-card-text>
@@ -39,8 +43,8 @@
                         <span>{{c.User.Nickname[0]}}</span>
                     </v-list-item-avatar>
                     <v-list-item-content>
-                        <v-list-item-title>{{c.User.nickname}}</v-list-item-title>
-                        <v-list-item-subtitle>{{c.content}}</v-list-item-subtitle>
+                        <h3>{{c.User.nickname}}</h3>
+                        <div>{{c.content}}</div>
                     </v-list-item-content>
                 </v-list-item>
             </v-list>
@@ -50,9 +54,10 @@
 
 <script>
 import CommentForm from '~/components/CommentForm';
+
 export default {
     components: {
-        CommmentForm,
+        CommentForm,
     },
     props: {
         post: {
@@ -82,5 +87,8 @@ export default {
 </script>
 
 <style scoped>
-
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
 </style>
