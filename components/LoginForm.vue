@@ -17,7 +17,7 @@
             type="password"
             required
           />
-          <v-btn color="green" type="submit" :disabled="!valid">로그인</v-btn>
+          <v-btn color="primary" type="submit" :disabled="!valid" >로그인</v-btn>
           <v-btn nuxt to="/signup">회원가입</v-btn>
         </v-container>
       </v-form>
@@ -59,7 +59,7 @@
         if (this.$refs.form.validate()) {
           this.$store.dispatch('users/logIn', {
             email: this.email,
-            nickname: '제로초',
+            nickname: '이태규',
           });
         }
       },

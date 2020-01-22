@@ -6,15 +6,17 @@
           v-model="content"
           outlined
           auto-grow
+          autofocus
           clearable
           label="어떤 신기한 일이 있었나요?"
           :hide-details="hideDetails"
           :success-messages="successMessages"
           :success="success"
+          counter
           :rules="[v => !!v.trim() || '내용을 입력하세요.']"
           @input="onChangeTextarea"
         />
-        <v-btn type="submit" color="green" absolute right>짹짹</v-btn>
+        <v-btn type="submit" color="primary" absolute right>등록</v-btn>
         <v-btn>이미지 업로드</v-btn>
       </v-form>
     </v-container>

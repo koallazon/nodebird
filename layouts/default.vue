@@ -1,9 +1,14 @@
 <template>
     <v-app>
         <nav>
-            <v-toolbar dark color="green">
+            <v-toolbar 
+              dark
+              color="primary"
+              
+              src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
+            >
                 <v-toolbar-title>
-                    <nuxt-link to="/">NodeBird</nuxt-link>
+                    <nuxt-link to="/" class="white--text" >NodeBird</nuxt-link>
                 </v-toolbar-title>
                 <v-spacer />
                 <v-toolbar-items>
