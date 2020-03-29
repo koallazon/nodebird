@@ -25,6 +25,6 @@ export const actions = {
         commit('removeMainPost', payload);
     },
     addComment({ commit }, payload) {
-        commit('addComent', payload);
+        commit('addComment', payload);
     }
 }

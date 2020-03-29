@@ -1,13 +1,13 @@
 <template>
   <div>
     <v-container>
-      <v-card style="margin-bottom: 20px">
+      <v-card class="mb-5">
         <v-container>
           <v-subheader>내 프로필</v-subheader>
           <v-form v-model="valid" @submit.prevent="onChangeNickname">
             <v-text-field
               v-model="nickname"
-              label="닉네임"
+              :placeholder="currentNick"
               :rules="nicknameRules"
               required
             />
@@ -15,19 +15,29 @@
           </v-form>
         </v-container>
       </v-card>
-      <v-card style="margin-bottom: 20px">
-        <v-container>
+      <v-card class="mb-5">
+        <v-list subheader>
           <v-subheader>팔로잉</v-subheader>
-          <follow-list :users="followingList" :remove="removeFollowing" />
+          <follow-list
+            v-if="followingList.length > 0"
+            :users="followingList"
+            :remove="removeFollowing"
+          />
+          <p class="text-center body-2 grey--text text--darken-2" v-else>팔로잉이 없습니다.</p>
           <v-btn @click="loadMoreFollowings" v-if="hasMoreFollowing" dark color="blue" style="width: 100%">더보기</v-btn>
-        </v-container>
+        </v-list>
       </v-card>
-      <v-card style="margin-bottom: 20px">
-        <v-container>
+      <v-card class="mb-5">
+        <v-list subheader>
           <v-subheader>팔로워</v-subheader>
-          <follow-list :abc="abc" :users="followerList" :remove="removeFollower" />
+          <follow-list
+            v-if="followerList.length > 0"
+            :users="followerList"
+            :remove="removeFollower"
+          />
+          <p class="text-center body-2 grey--text text--darken-2" v-else>팔로워가 없습니다.</p>
           <v-btn @click="loadMoreFollowers" v-if="hasMoreFollower" dark color="blue" style="width: 100%">더보기</v-btn>
-        </v-container>
+        </v-list>
       </v-card>
     </v-container>
   </div>
@@ -43,6 +53,7 @@
       return {
         valid: false,
         nickname: '',
+        currentNick: '',
         nicknameRules: [
           v => !!v || '닉네임을 입력하세요.',
         ],
@@ -67,6 +78,9 @@
       store.dispatch('users/loadFollowings');
     },
     methods: {
+      initNickName () {
+        this.currentNick = this.$store.state.users.me.nickname;
+      },
       onChangeNickname() {
         this.$store.dispatch('users/changeNickname', {
           nickname: this.nickname,
@@ -90,9 +104,12 @@
         title: '프로필',
       };
     },
+    mounted () {
+      this.initNickName()
+    },
     middleware: 'authenticated',
   };
 </script>
 
-<style>
+<style scoped>
 </style>

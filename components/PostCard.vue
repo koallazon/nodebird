@@ -1,5 +1,5 @@
 <template>
-    <div style="margin-bottom: 20px;">
+    <div class="mb-5">
         <v-card>
             <v-image />
             <v-card-title>
@@ -28,9 +28,9 @@
                             <v-icon>mdi-dots-horizontal</v-icon>
                         </v-btn>
                     </template>
-                    <div style="background: white">
-                        <v-btn dark color="red" @click="onRemovePost">삭제</v-btn>
-                        <v-btn dark color="orange" @click="onEditPost">수정</v-btn>
+                    <div>
+                        <v-btn color="red" class="white--text" @click="onRemovePost">삭제</v-btn>
+                        <v-btn color="orange" class="white--text" @click="onEditPost">수정</v-btn>
                     </div>
                 </v-menu>
             </v-card-actions>
@@ -39,12 +39,12 @@
             <comment-form :post-id="post.id"/>
             <v-list>
                 <v-list-item v-for="c in post.Comments" :key="c.id">
-                    <v-list-item-avatar color="teal">
-                        <span>{{c.User.Nickname[0]}}</span>
+                    <v-list-item-avatar color="teal" class="white--text">
+                        <span>{{c.User.nickname[0]}}</span>
                     </v-list-item-avatar>
                     <v-list-item-content>
-                        <h3>{{c.User.nickname}}</h3>
-                        <div>{{c.content}}</div>
+                        <v-list-item-title>{{c.User.nickname}}</v-list-item-title>
+                        <v-list-item-subtitle>{{c.content}}</v-list-item-subtitle>
                     </v-list-item-content>
                 </v-list-item>
             </v-list>
@@ -60,28 +60,27 @@ export default {
         CommentForm,
     },
     props: {
-        post: {
-            type: Object,
-            required: true,
-        },
+      post: {
+        type: Object, 
+        required: true,
+      },
     },
     data() {
-        return {
-            commentOpened : false
-        }   
+      return {
+        commentOpened: false
+      }
     },
     methods: {
-        onRemovePost() {
-            this.$store.dispatch('posts/remove', {
-                id: this.post.id,
-            })
-        },
-        onEditPost() {
-
-        },
-        onToggleComment() {
-            this.commentOpened = !this.commentOpended;
-        }
+      onRemovePost() {
+        this.$store.dispatch('posts/remove', {
+          id: this.post.id,
+        })
+      },
+      onEditPost() {
+      },
+      onToggleComment() {
+        this.commentOpened = !this.commentOpened;
+      }
     },
 }
 </script>

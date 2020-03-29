@@ -1,9 +1,10 @@
 <template>
-  <v-card style="margin-bottom: 20px">
+  <v-card class="mb-5">
     <v-container>
       <v-form ref="form" v-model="valid" @submit.prevent="onSubmitForm">
         <v-textarea
           v-model="content"
+          class="mb-2"
           outlined
           auto-grow
           autofocus
@@ -29,7 +30,7 @@
     data() {
       return {
         valid: false,
-        hideDetails: true,
+        hideDetails: false,
         successMessages: '',
         success: false,
         content: '',

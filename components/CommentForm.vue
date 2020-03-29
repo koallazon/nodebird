@@ -1,5 +1,10 @@
 <template>
-    <v-form ref="form" v-model="valid" style="position: relative" @submit.prevent="onSubmitForm">
+    <v-form
+      ref="form"
+      v-model="valid"
+      style="position: relative"
+      @submit.prevent="onSubmitForm"
+    >
         <v-textarea 
          v-model="content"
          filled
@@ -47,11 +52,11 @@
             onSubmitForm() {
                 if(this.$refs.form.validate()) {
                     this.$store.dispatch('posts/addComment', {
-                      id:  Date.now(),
+                      id: Date.now(),
                       postId: this.postId,
                       content: this.content,
                       User: {
-                          nickname: this.me.nickname
+                        nickname: this.me.nickname
                       } 
                     })
                      .then(() => {
@@ -60,8 +65,8 @@
                          this.successMessages = '댓글이 작성되었습니다.';
                          this.hideDetails = false;
                      })
-                     .catch(() => {
-
+                     .catch((err) => {
+                        console.log(err)
                      })
                 }
             }

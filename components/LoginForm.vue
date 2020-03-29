@@ -55,12 +55,16 @@
       },
     },
     methods: {
-      onSubmitForm() {
+      async onSubmitForm() {
         if (this.$refs.form.validate()) {
-          this.$store.dispatch('users/logIn', {
-            email: this.email,
-            nickname: '이태규',
-          });
+          try {
+            const result = await this.$store.dispatch('users/logIn', {
+              email: this.email,
+              nickname: '이태규',
+            });
+          } catch (err) {
+            console.log(err)
+          }
         }
       },
       onLogOut() {

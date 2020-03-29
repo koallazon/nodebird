@@ -8,6 +8,8 @@
 </template>
 
 <script>
+  // post/_id.vue
+  // 주소 post/1    post/100    post/13    post
   import PostCard from '~/components/PostCard';
   export default {
     components: {

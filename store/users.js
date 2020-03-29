@@ -1,25 +1,57 @@
 export const state = () => ({
     me: null,
-    followerList: [{
+    followerList: [
+      {
         id: 1,
-        nickname: '이태규'
-    },{
+        nickname: '강동원'
+      },
+      {
         id: 2,
-        nickname: '김진휘'
-    },{
+        nickname: '최지현'
+      },
+      {
         id: 3,
-        nickname: '이지윤'
-    }],
-    followingList: [{
+        nickname: '윌스미스'
+      },
+      {
+        id: 4,
+        nickname: '지동하'
+      },
+      {
+        id: 5,
+        nickname: '정동진'
+      },
+      {
+        id: 6,
+        nickname: '대구시'
+      },
+      {
+        id: 7,
+        nickname: '고마지'
+      },
+      {
+        id: 8,
+        nickname: '둘둘둘'
+      },
+      {
+        id: 9,
+        nickname: '짱지현'
+      }
+    ],
+    followingList: [
+      {
         id: 1,
-        nickname: '이태규'
-    },{
+        nickname: '주현미'
+      },
+      {
         id: 2,
-        nickname: '김진휘'
-    },{
+        nickname: '조선호'
+      },
+      {
         id: 3,
-        nickname: '이지윤'
-    }],
+        nickname: '박선희'
+      }
+    ]
 });
 
 export const mutations = {
@@ -29,17 +61,17 @@ export const mutations = {
     changeNickname(state, payload) {
         state.me.nickname = payload.nickname;
     },
-    addFollowing(state, payload) {
-        state.followerList.push(payload);
-    },
     addFollower(state, payload) {
         state.followingList.push(payload);
+    },
+    addFollowing(state, payload) {
+        state.followerList.push(payload);
     },
     removeFollower(state, payload) {
         const index = state.followerList.findIndex(v => v.id === payload.id);
         state.followerList.splice(index, 1);
     },
-    removeFollower(state, payload) {
+    removeFollowing(state, payload) {
         const index = state.followingList.findIndex(v => v.id === payload.id);
         state.followingList.splice(index, 1);
     }
@@ -59,17 +91,20 @@ export const actions = {
     changeNickname({ commit }, payload) {
         commit('changeNickname', payload);
     },
+    addFollower({ commit }, payload) {
+        commit('addFollower', payload);
+    },
     addFollowing({ commit }, payload) {
         commit('addFollowing', payload);
     },
-    addFollower({ commit }, payload) {
-        commit('addFollower', payload);
+    removeFollower({ commit }, payload) {
+        commit('removeFollower', payload);
     },
     removeFollowing({ commit }, payload) {
         // 비동기 요청
         commit('removeFollowing', payload);
     },
-    removeFollower({ commit }, payload) {
-        commit('removeFollower', payload);
+    loadFollower({ commit }, payload) {
+      
     }
 }

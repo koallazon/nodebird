@@ -3,12 +3,12 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _52a90e80 = () => interopDefault(import('..\\pages\\profile.vue' /* webpackChunkName: "pages_profile" */))
-const _115e02d1 = () => interopDefault(import('..\\pages\\signup.vue' /* webpackChunkName: "pages_signup" */))
-const _18c75ebb = () => interopDefault(import('..\\pages\\hashtag\\_id\\index.vue' /* webpackChunkName: "pages_hashtag__id_index" */))
-const _20ae521e = () => interopDefault(import('..\\pages\\post\\_id\\index.vue' /* webpackChunkName: "pages_post__id_index" */))
-const _4b2d741c = () => interopDefault(import('..\\pages\\user\\_id\\index.vue' /* webpackChunkName: "pages_user__id_index" */))
-const _4ccae1ae = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
+const _ed06721a = () => interopDefault(import('../pages/profile.vue' /* webpackChunkName: "pages/profile" */))
+const _0ee0a23e = () => interopDefault(import('../pages/signup.vue' /* webpackChunkName: "pages/signup" */))
+const _95fe57f8 = () => interopDefault(import('../pages/hashtag/_id/index.vue' /* webpackChunkName: "pages/hashtag/_id/index" */))
+const _39a34c98 = () => interopDefault(import('../pages/post/_id/index.vue' /* webpackChunkName: "pages/post/_id/index" */))
+const _1a0374c2 = () => interopDefault(import('../pages/user/_id/index.vue' /* webpackChunkName: "pages/user/_id/index" */))
+const _7e8063c8 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 // TODO: remove in Nuxt 3
 const emptyFn = () => {}
@@ -28,27 +28,27 @@ export const routerOptions = {
 
   routes: [{
     path: "/profile",
-    component: _52a90e80,
+    component: _ed06721a,
     name: "profile"
   }, {
     path: "/signup",
-    component: _115e02d1,
+    component: _0ee0a23e,
     name: "signup"
   }, {
     path: "/hashtag/:id?",
-    component: _18c75ebb,
+    component: _95fe57f8,
     name: "hashtag-id"
   }, {
     path: "/post/:id?",
-    component: _20ae521e,
+    component: _39a34c98,
     name: "post-id"
   }, {
     path: "/user/:id?",
-    component: _4b2d741c,
+    component: _1a0374c2,
     name: "user-id"
   }, {
     path: "/",
-    component: _4ccae1ae,
+    component: _7e8063c8,
     name: "index"
   }],
 
