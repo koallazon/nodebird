@@ -1,19 +1,21 @@
 <template>
-    <div>
-        <v-list-item v-for="user in users" :key="user.id" :class="`d-flex justify-start md-6`">
-            <v-list-item-avatar>
-                <v-img :src="user.avatar!='' ? user.avatar : basicProfile"></v-img>
-            </v-list-item-avatar>
-            <v-list-item-content>
-                <v-list-item-title v-text="user.nickname"></v-list-item-title>
-            </v-list-item-content>
-            <v-list-item-icon class="float-left">
-                <v-icon @click="remove(user.id)">
-                    mdi-minus-box-outline
-                </v-icon>
-            </v-list-item-icon>
-        </v-list-item>
-    </div>
+    <v-list>
+        <v-col v-for="user in users" :key="user.id" cols="12" md="4" style="display: inline-block">
+            <v-list-item>
+                <v-list-item-avatar color="indigo">
+                    <span class="white--text headline">{{user.nickname[0]}}</span>
+                </v-list-item-avatar>
+                <v-list-item-content>
+                    <v-list-item-title v-text="user.nickname"></v-list-item-title>
+                </v-list-item-content>
+                <v-list-item-action>
+                    <v-icon @click="remove(user.id)">
+                        mdi-minus-circle-outline
+                    </v-icon>
+                </v-list-item-action>
+            </v-list-item>
+        </v-col>
+    </v-list>
 </template>
 
 <script>

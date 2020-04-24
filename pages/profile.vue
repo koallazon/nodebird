@@ -24,7 +24,13 @@
             :remove="removeFollowing"
           />
           <p class="text-center body-2 grey--text text--darken-2" v-else>팔로잉이 없습니다.</p>
-          <v-btn @click="loadMoreFollowings" v-if="hasMoreFollowing" dark color="blue" style="width: 100%">더보기</v-btn>
+          <v-btn
+            @click="loadMoreFollowings" 
+            v-if="hasMoreFollowing"
+            dark
+            color="blue"
+            style="width: 100%"
+          >더보기</v-btn>
         </v-list>
       </v-card>
       <v-card class="mb-5">
@@ -36,7 +42,13 @@
             :remove="removeFollower"
           />
           <p class="text-center body-2 grey--text text--darken-2" v-else>팔로워가 없습니다.</p>
-          <v-btn @click="loadMoreFollowers" v-if="hasMoreFollower" dark color="blue" style="width: 100%">더보기</v-btn>
+          <v-btn
+            @click="loadMoreFollowers"
+            v-if="hasMoreFollower"
+            dark
+            color="blue"
+            style="width: 100%"
+          >더보기</v-btn>
         </v-list>
       </v-card>
     </v-container>
@@ -45,6 +57,7 @@
 
 <script>
   import FollowList from '~/components/FollowList';
+  import { mapState } from 'vuex'
   export default {
     components: {
       FollowList,
@@ -60,18 +73,12 @@
       };
     },
     computed: {
-      followerList() {
-        return this.$store.state.users.followerList;
-      },
-      followingList() {
-        return this.$store.state.users.followingList;
-      },
-      hasMoreFollowing() {
-        return this.$store.state.users.hasMoreFollowing;
-      },
-      hasMoreFollower() {
-        return this.$store.state.users.hasMoreFollower;
-      },
+      ...mapState({
+        followerList: state => state.users.followerList,
+        followingList: state => state.users.followingList,
+        hasMoreFollowing: state => state.users.hasMoreFollowing,
+        hasMoreFollower: state => state.users.hasMoreFollower
+      })
     },
     fetch({ store }) {
       store.dispatch('users/loadFollowers');

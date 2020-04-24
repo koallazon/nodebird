@@ -1,58 +1,14 @@
 export const state = () => ({
     me: null,
-    followerList: [
-      {
-        id: 1,
-        nickname: '강동원'
-      },
-      {
-        id: 2,
-        nickname: '최지현'
-      },
-      {
-        id: 3,
-        nickname: '윌스미스'
-      },
-      {
-        id: 4,
-        nickname: '지동하'
-      },
-      {
-        id: 5,
-        nickname: '정동진'
-      },
-      {
-        id: 6,
-        nickname: '대구시'
-      },
-      {
-        id: 7,
-        nickname: '고마지'
-      },
-      {
-        id: 8,
-        nickname: '둘둘둘'
-      },
-      {
-        id: 9,
-        nickname: '짱지현'
-      }
-    ],
-    followingList: [
-      {
-        id: 1,
-        nickname: '주현미'
-      },
-      {
-        id: 2,
-        nickname: '조선호'
-      },
-      {
-        id: 3,
-        nickname: '박선희'
-      }
-    ]
+    followerList: [],
+    followingList: [],
+    hasMoreFollower: true,
+    hasMoreFollowing: true,
 });
+
+const totalFollowers = 8;
+const totalFollowings = 6;
+const limit = 3;
 
 export const mutations = {
     setMe(state, payload) {
@@ -74,12 +30,34 @@ export const mutations = {
     removeFollowing(state, payload) {
         const index = state.followingList.findIndex(v => v.id === payload.id);
         state.followingList.splice(index, 1);
+    },
+    loadFollowings(state) {
+      const diff = totalFollowings - state.followingList.length
+      const fakeUsers = Array(diff > limit ? limit : diff).fill().map(v => ({
+        id: Math.random().toString(),
+        nickname: Math.floor(Math.random() * 1000)
+      }))
+      state.followingList = state.followingList.concat(fakeUsers);
+      state.hasMoreFollowing = fakeUsers.length === limit;
+    },
+    loadFollowers(state) {
+      const diff = totalFollowers - state.followerList.length
+      const fakeUsers = Array(diff > limit ? limit : diff).fill().map(v => ({
+        id: Math.random().toString(),
+        nickname: Math.floor(Math.random() * 1000)
+      }))
+      state.followerList = state.followerList.concat(fakeUsers);
+      state.hasMoreFollower = fakeUsers.length === limit;
     }
 }
 
 export const actions = {
     signUp({ commit, state }, payload) {
-        //서버에 회원가입 요청을 보내는 부분
+        this.$axios.post('/user', {
+          email: payload.email,
+          nickname: payload.nickname,
+          password: payload.password
+        })
         commit('setMe', payload);
     },
     logIn({ commit }, payload) {
@@ -104,7 +82,14 @@ export const actions = {
         // 비동기 요청
         commit('removeFollowing', payload);
     },
-    loadFollower({ commit }, payload) {
-      
+    loadFollowers({ commit, state }, payload) {
+      if (state.hasMoreFollower) {
+        commit('loadFollowers');
+      }
+    },
+    loadFollowings({ commit, state }, payload) {
+      if (state.hasMoreFollowing) {
+        commit('loadFollowings');
+      }
     }
 }

@@ -1,7 +1,7 @@
 <template>
     <div class="mb-5">
         <v-card>
-            <v-image />
+            <!--<v-image />-->
             <v-card-title>
                 <h3>
                     <nuxt-link :to="'/user/' + post.id">{{post.User.nickname}}</nuxt-link>
